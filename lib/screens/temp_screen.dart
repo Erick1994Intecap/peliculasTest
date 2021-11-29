@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/providers/movies_provider.dart';
-import 'package:provider/provider.dart';
 import 'dart:async';
-import 'package:peliculas/screens/screens.dart';
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 //Future obtener async
@@ -63,6 +59,8 @@ class _MyAppState extends State<MyAppTemp> {
 
   @override
   Widget build(BuildContext context) {
+    List almbul = [];
+
     return MaterialApp(
       title: 'Ejemplo de GET',
       theme: ThemeData(primarySwatch: Colors.blue),
@@ -75,7 +73,12 @@ class _MyAppState extends State<MyAppTemp> {
             future: futureAlbum,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data!.overview);
+                almbul.add(Album(
+                    overview: snapshot.data!.overview,
+                    id: snapshot.data!.id,
+                    title: snapshot.data!.title));
+                print(almbul);
+                return Text('Si funciona'); //Text(snapshot.data!.overview);
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
