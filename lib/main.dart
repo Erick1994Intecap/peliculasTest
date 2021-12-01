@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/providers/movies_provider.dart';
 import 'package:provider/provider.dart';
-import 'dart:async';
-import 'models/now_playing_response.dart';
 import 'screens/screens.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 void main() => runApp(AppState());
 
@@ -111,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
         'details': (_) => DetailsScreen(),
       },
       theme: ThemeData.light()
-          .copyWith(appBarTheme: AppBarTheme(color: Colors.indigoAccent)),
+          .copyWith(appBarTheme: const AppBarTheme(color: Colors.indigoAccent)),
     );
   }
 }

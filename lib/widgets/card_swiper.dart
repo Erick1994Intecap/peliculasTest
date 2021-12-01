@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:peliculas/models/models.dart';
+import 'package:peliculas/providers/movies_provider.dart';
+import 'package:peliculas/widgets/widgets.dart';
 
 class CardSwiper extends StatefulWidget {
   const CardSwiper({Key? key}) : super(key: key);
@@ -12,6 +18,14 @@ class _CardSwiperState extends State<CardSwiper> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    late Future<Movie> futureAlbum;
+
+    @override
+    void initState() {
+      super.initState();
+      //futureAlbum = MoviesProvider().getOnDisplayMovies();
+    }
+
     return Container(
       width: double.infinity,
       height: size.height * 0.5,
